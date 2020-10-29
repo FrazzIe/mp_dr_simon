@@ -149,8 +149,10 @@ spawnPlayers(giveKnife, endGame, loser) {
 		self.participants[i] freezeControls(true);
 		self.participants[i] takeAllWeapons();
 
-		if (giveKnife)
+		if (giveKnife) {
 			self.participants[i] giveWeapon("knife_mp");
+			self.participants[i] switchToWeapon("knife_mp");
+		}
 	}
 
 	if (endGame) {
