@@ -62,7 +62,7 @@ main(participants, length, disableThirdPerson) {
 
 	if (isDefined(length) && self.length > self.lengthOffset)
 		self.length = length;
-	
+
 	for (i = 0; i < self.participants.size; i++) {
 		thread deathListener(self.participants[i]);
 
@@ -164,10 +164,10 @@ spawnPlayers(giveKnife, endGame, loser) {
 				self.participants[i] setClientDvar("cg_thirdperson", 0);
 				self.participants[i] setStat(988, 0);
 			}
-		}		
+		}
 	}
 
-	for (count = 3; count >= 0; count--) {							
+	for (count = 3; count >= 0; count--) {
 		for (i = 0; i < self.participants.size; i++) {
 			if (count != 0)
 				self.participants[i] iPrintLnBold("^" + count + "" + count);
