@@ -89,7 +89,7 @@ main(participants, length, disableThirdPerson) {
 		self.length -= self.lengthOffset; //lessen the wait period between showing and removing
 
 		if (self.length < 0)
-			spawnPlayers(true, true);
+			thread spawnPlayers(true, true);
 	}
 }
 
@@ -113,7 +113,7 @@ failListener() {
 
 	failTrigger = getEnt("simon_fall", "targetname");
 	failTrigger waittill("trigger", loser);
-	spawnPlayers(true, true, loser);
+	thread spawnPlayers(true, true, loser);
 }
 
 getPlatformCount() {
@@ -165,6 +165,7 @@ spawnPlayers(giveKnife, endGame, loser) {
 				self.participants[i] setStat(988, 0);
 			}
 		}
+		level notify("simon_end"); //End the game
 	}
 
 	for (count = 3; count >= 0; count--) {
@@ -180,9 +181,6 @@ spawnPlayers(giveKnife, endGame, loser) {
 		}
 		wait(1);
 	} //countdown
-
-	if (endGame)
-		level notify("simon_end"); //End the game
 }
 
 teleportListener(side) { //Teleport players who fall off the platforms
